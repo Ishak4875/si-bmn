@@ -29,19 +29,19 @@
                     </button>
                 </div>
             </div>
-            <form method="GET" action="">
+            <form method="GET" action="/paket/search">
                 <div class="row mb-3 align-items-end">
 
                     <!-- Kecil -->
                     <div class="col-md-2">
-                        <input type="text" name="tahun" class="form-control" placeholder="Tahun Anggaran"
-                            value="{{ request('tahun') }}">
+                        <input type="text" name="tahun_anggaran" class="form-control" placeholder="Tahun Anggaran"
+                            value="{{ request('tahun_anggaran') }}">
                     </div>
 
                     <!-- Besar -->
                     <div class="col-md-4">
-                        <input type="text" name="jabatan" class="form-control" placeholder="PPK (Jabatan)"
-                            value="{{ request('jabatan') }}">
+                        <input type="text" name="jabatan_ppk" class="form-control" placeholder="PPK (Jabatan)"
+                            value="{{ request('jabatan_ppk') }}">
                     </div>
 
                     <!-- Besar -->
@@ -224,7 +224,7 @@
 
                     <div>
                         <label for="id_ppk" class="col-form-label">Nama PPK</label>
-                        <select class="form-select" id="id_ppk" name="id_ppk" size="5" required>
+                        <select class="form-select" id="id_ppk" name="id_ppk" required>
                             @foreach($ppk as $dataPPK)
                             <option value="{{ $dataPPK->id_ppk }}"
                                 {{ $dataPPK->id_ppk == $data->id_ppk ? 'selected' : '' }}>

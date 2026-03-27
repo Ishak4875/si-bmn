@@ -29,6 +29,16 @@ class PaketController extends Controller
         return view('v_paket', $data);
     }
 
+    public function searchPaket(Request $request)
+    {
+        $data = [
+            'paket' => $this->PaketModel->searchData($request->tahun_anggaran, $request->jabatan_ppk, $request->nama),
+            'ppk' => $this->PPKModel->getAllData()
+        ];
+
+        return view('v_paket', $data);
+    }
+
     public function insertPaket(Request $request)
     {
         $data = [
