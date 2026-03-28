@@ -6,12 +6,12 @@
         <a href="{{asset('template/dist')}}/index.html" class="brand-link">
             <!--begin::Brand Image-->
             <img
-                src="{{asset('template/dist')}}/assets/img/AdminLTELogo.png"
+                src="{{'/img'}}/logo.png"
                 alt="AdminLTE Logo"
                 class="brand-image opacity-75 shadow" />
             <!--end::Brand Image-->
             <!--begin::Brand Text-->
-            <span class="brand-text fw-light">AdminLTE 4</span>
+            <span class="brand-text fw-light">SI-BMN</span>
             <!--end::Brand Text-->
         </a>
         <!--end::Brand Link-->
@@ -28,7 +28,7 @@
                 aria-label="Main navigation"
                 data-accordion="false"
                 id="navigation">
-                <li class="nav-item menu-open">
+                <li class="nav-item">
                     <a href="/" class="nav-link {{ request()->is('/') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-speedometer"></i>
                         <p>
@@ -36,7 +36,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item menu-open">
+                <li class="nav-item">
                     <a href="/ppk" class="nav-link {{ request()->is('/ppk') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-person"></i>
                         <p>
@@ -44,7 +44,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item menu-open">
+                <li class="nav-item">
                     <a href="/paket" class="nav-link {{ request()->is('/paket') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-person-workspace"></i>
                         <p>

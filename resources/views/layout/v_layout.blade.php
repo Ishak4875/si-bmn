@@ -14,7 +14,7 @@
     <!--end::Accessibility Meta Tags-->
 
     <!--begin::Primary Meta Tags-->
-    <meta name="title" content="AdminLTE v4 | Dashboard" />
+    <meta name="title" content="SI-BMN" />
     <meta name="author" content="ColorlibHQ" />
     <meta
         name="description"
@@ -124,26 +124,29 @@
                     <li class="nav-item dropdown user-menu">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img
-                                src="{{asset('template/dist')}}/assets/img/user2-160x160.jpg"
+                                src="{{'/img'}}/logo.png"
                                 class="user-image rounded-circle shadow"
                                 alt="User Image" />
-                            <span class="d-none d-md-inline">Alexander Pierce</span>
+                            <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                             <!--begin::User Image-->
                             <li class="user-header text-bg-primary">
                                 <img
-                                    src="{{asset('template/dist')}}/assets/img/user2-160x160.jpg"
+                                    src="{{'/img'}}/logo.png"
                                     class="rounded-circle shadow"
                                     alt="User Image" />
                                 <p>
-                                    Alexander Pierce - Web Developer
+                                    {{ Auth::user()->name }}
                                 </p>
                             </li>
                             <!--end::User Image-->
                             <!--begin::Menu Footer-->
                             <li class="user-footer">
-                                <a href="#" class="btn btn-outline-danger float-end">Sign out</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-danger float-end">Sign out</button>
+                                </form>
                             </li>
                             <!--end::Menu Footer-->
                         </ul>
