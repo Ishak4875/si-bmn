@@ -72,6 +72,18 @@ class PaketController extends Controller
         return view('v_detailPaket', $data);
     }
 
+
+    public function searchOutput(Request $request)
+    {
+        $id_paket = $request->id_paket_pekerjaan;
+        $jenis_bangunan = $request->jenis_bangunan;
+        $data = [
+            'paket' => $this->PaketModel->getDetailData($id_paket),
+            'output' => $this->OutputModel->searchData($id_paket, $jenis_bangunan)
+        ];
+        return view('v_detailPaket', $data);
+    }
+
     public function updatePaket(Request $request)
     {
         $data = [

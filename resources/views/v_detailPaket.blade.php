@@ -95,6 +95,28 @@
                     </button>
                 </div>
             </div>
+            <form method="GET" action="/paket/detail/{{$paket->id_paket_pekerjaan}}/search">
+                <div class="row mb-3 align-items-end">
+
+                    <!-- Kecil -->
+                    <div class="col-md-10">
+                        <input type="text" name="jenis_bangunan" class="form-control" placeholder="Jenis Bangunan"
+                            value="{{ request('jenis_bangunan') }}">
+                    </div>
+
+                    <!-- Tombol -->
+                    <div class="col-md-2 d-flex justify-content-end gap-2">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-search"></i> Cari
+                        </button>
+
+                        <a href="{{ url()->current() }}" class="btn btn-secondary">
+                            Reset
+                        </a>
+                    </div>
+
+                </div>
+            </form>
         </div>
         <div class="card-body">
             <table class="table">

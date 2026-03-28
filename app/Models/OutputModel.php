@@ -14,6 +14,17 @@ class OutputModel extends Model
             ->paginate(10);
     }
 
+    public function searchData($id_paket, $jenis_bangunan)
+    {
+        return DB::table('tbl_rincian_output')
+            ->where('id_paket_pekerjaan', $id_paket)
+            ->when($jenis_bangunan, function ($query, $jenis_bangunan) {
+                return $query->where('jenis_bangunan', 'like', '%' . $jenis_bangunan . '%');
+            })
+            ->paginate(10)
+            ->withQueryString();
+    }
+
     public function insertOutput($data_output)
     {
         return DB::table('tbl_rincian_output')->insert($data_output);

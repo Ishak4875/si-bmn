@@ -64,4 +64,14 @@ class OutputController extends Controller
             return redirect()->back()->with('failed', 'Data Output Gagal Diperbarui');
         }
     }
+
+    public function deleteOutput(Request $request)
+    {
+        try {
+            $this->OutputModel->deleteOutput($request->id_rincian_output);
+            return redirect()->back()->with('success', 'Data Output Berhasil Dihapus');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', 'Data Output Gagal Dihapus');
+        }
+    }
 }
