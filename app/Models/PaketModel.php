@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PaketModel extends Model
 {
@@ -12,10 +13,38 @@ class PaketModel extends Model
         return DB::table('tbl_paket_pekerjaan')
             ->leftJoin('tbl_ppk', 'tbl_paket_pekerjaan.id_ppk', '=', 'tbl_ppk.id_ppk')
             ->leftJoin('tbl_satker', 'tbl_paket_pekerjaan.id_satker', '=', 'tbl_satker.id_satker')
+
+            ->when(Auth::user()->level == 2, function ($query) {
+                $query->where('tbl_paket_pekerjaan.id_satker', 2);
+            })
+
+            ->when(Auth::user()->level == 3, function ($query) {
+                $query->where('tbl_paket_pekerjaan.id_satker', 3);
+            })
+
+            ->when(Auth::user()->level == 4, function ($query) {
+                $query->where('tbl_paket_pekerjaan.id_satker', 4);
+            })
+
+            ->when(Auth::user()->level == 5, function ($query) {
+                $query->where('tbl_paket_pekerjaan.id_satker', 5);
+            })
+
             ->paginate(10);
     }
 
-    public function searchData($tahun_anggaran, $ppk, $nama)
+    public function countPaketPekerjaan()
+    {
+        return DB::table('tbl_paket_pekerjaan')
+
+            ->when(Auth::user()->level != 0, function ($query) {
+                $query->where('tbl_paket_pekerjaan.id_satker', Auth::user()->level);
+            })
+
+            ->count();
+    }
+
+    public function searchData($tahun_anggaran, $ppk, $nama_paket_pekerjaan)
     {
         return DB::table('tbl_paket_pekerjaan')
             ->leftJoin('tbl_ppk', 'tbl_paket_pekerjaan.id_ppk', '=', 'tbl_ppk.id_ppk')
@@ -29,8 +58,8 @@ class PaketModel extends Model
                 return $query->where('jabatan_ppk', 'like', '%' . $ppk . '%');
             })
 
-            ->when($nama, function ($query, $nama) {
-                return $query->where('nama', 'like', '%' . $nama . '%');
+            ->when($nama_paket_pekerjaan, function ($query, $nama_paket_pekerjaan) {
+                return $query->where('nama_paket_pekerjaan', 'like', '%' . $nama_paket_pekerjaan . '%');
             })
 
             ->paginate(10)

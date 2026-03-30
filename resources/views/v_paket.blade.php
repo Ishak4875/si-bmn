@@ -46,8 +46,8 @@
 
                     <!-- Besar -->
                     <div class="col-md-4">
-                        <input type="text" name="nama" class="form-control" placeholder="Nama PPK"
-                            value="{{ request('nama') }}">
+                        <input type="text" name="nama_paket_pekerjaan" class="form-control" placeholder="Nama Paket Pekerjaan"
+                            value="{{ request('nama_paket_pekerjaan') }}">
                     </div>
 
                     <!-- Tombol -->
@@ -133,10 +133,22 @@
                     <div>
                         <label for="id_satker" class="col-form-label">Nama Satker</label>
                         <select class="form-select" name="id_satker" id="id_satker" required>
+
+                            @if(Auth::user()->level == 2)
+                            <option value="2">SNVT PJPA SULAWESI IV PROV. SULAWESI TENGGARA</option>
+                            @elseif(Auth::user()->level == 3)
+                            <option value="3">SNVT PJSA SULAWESI IV PROV. SULAWESI TENGGARA</option>
+                            @elseif(Auth::user()->level == 4)
+                            <option value="4">SNVT PEMBANGUNAN BENDUNGAN BWS SULAWESI IV</option>
+                            @elseif(Auth::user()->level == 5)
+                            <option value="5">SATKER OP SDA SULAWESI IV</option>
+                            @else
                             <option value="2">SNVT PJPA SULAWESI IV PROV. SULAWESI TENGGARA</option>
                             <option value="3">SNVT PJSA SULAWESI IV PROV. SULAWESI TENGGARA</option>
                             <option value="4">SNVT PEMBANGUNAN BENDUNGAN BWS SULAWESI IV</option>
                             <option value="5">SATKER OP SDA SULAWESI IV</option>
+                            @endif
+
                         </select>
                     </div>
 
@@ -215,10 +227,22 @@
                     <div>
                         <label for="id_satker" class="col-form-label">Nama Satker</label>
                         <select class="form-select" name="id_satker" id="id_satker" required>
+
+                            @if(Auth::user()->level == 2)
+                            <option value="2">SNVT PJPA SULAWESI IV PROV. SULAWESI TENGGARA</option>
+                            @elseif(Auth::user()->level == 3)
+                            <option value="3">SNVT PJSA SULAWESI IV PROV. SULAWESI TENGGARA</option>
+                            @elseif(Auth::user()->level == 4)
+                            <option value="4">SNVT PEMBANGUNAN BENDUNGAN BWS SULAWESI IV</option>
+                            @elseif(Auth::user()->level == 5)
+                            <option value="5">SATKER OP SDA SULAWESI IV</option>
+                            @else
                             <option value="2">SNVT PJPA SULAWESI IV PROV. SULAWESI TENGGARA</option>
                             <option value="3">SNVT PJSA SULAWESI IV PROV. SULAWESI TENGGARA</option>
                             <option value="4">SNVT PEMBANGUNAN BENDUNGAN BWS SULAWESI IV</option>
                             <option value="5">SATKER OP SDA SULAWESI IV</option>
+                            @endif
+
                         </select>
                     </div>
 

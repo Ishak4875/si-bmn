@@ -9,7 +9,7 @@ class PPKModel extends Model
 {
     public function getAllData()
     {
-        return DB::table('tbl_ppk')->paginate(5);
+        return DB::table('tbl_ppk')->get();
     }
 
     public function getAllSatker()

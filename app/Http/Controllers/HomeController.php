@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OutputModel;
+use App\Models\PaketModel;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    private $PaketModel;
+    private $OutputModel;
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->PaketModel = new PaketModel();
+        $this->OutputModel = new OutputModel();
     }
 
     /**

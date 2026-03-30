@@ -32,7 +32,7 @@ class PaketController extends Controller
     public function searchPaket(Request $request)
     {
         $data = [
-            'paket' => $this->PaketModel->searchData($request->tahun_anggaran, $request->jabatan_ppk, $request->nama),
+            'paket' => $this->PaketModel->searchData($request->tahun_anggaran, $request->jabatan_ppk, $request->nama_paket_pekerjaan),
             'ppk' => $this->PPKModel->getAllData()
         ];
 

@@ -44,7 +44,7 @@
                     @foreach($ppk as $index => $data)
                     <tr>
                         <th>
-                            {{ $ppk->firstItem() + $index }}
+                            {{ $loop->iteration }}
                         </th>
                         <td>{{ $data->jabatan_ppk }}</td>
                         <td>{{ $data->nama }}</td>
@@ -63,11 +63,6 @@
                     @endforeach
                 </tbody>
             </table>
-
-            <div class="d-flex justify-content-center mt-3">
-                {{ $ppk->links() }}
-            </div>
-
         </div>
     </div>
 </div>

@@ -2,20 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OutputModel;
+use App\Models\PaketModel;
 use App\Models\PPKModel;
 use Illuminate\Http\Request;
 
 class PPKController extends Controller
 {
     private $PPKModel;
+    private $PaketModel;
+    private $OutputModel;
     public function __construct()
     {
         $this->PPKModel = new PPKModel();
+        $this->PaketModel = new PaketModel();
+        $this->OutputModel = new OutputModel();
     }
 
     public function index()
     {
-        return view('v_dashboard');
+        $data = [
+            'jumlah_paket' => $this->PaketModel->countPaketPekerjaan(),
+            'jumlah_rincian_output' => $this->OutputModel->countOutputPekerjaan()
+        ];
+        return view('v_dashboard', $data);
     }
 
     public function getAllPPK()

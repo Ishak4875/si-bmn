@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class OutputModel extends Model
@@ -23,6 +24,19 @@ class OutputModel extends Model
             })
             ->paginate(10)
             ->withQueryString();
+    }
+
+    public function countOutputPekerjaan()
+    {
+        return DB::table('tbl_paket_pekerjaan')
+            ->leftJoin('tbl_ppk', 'tbl_paket_pekerjaan.id_ppk', '=', 'tbl_ppk.id_ppk')
+            ->leftJoin('tbl_satker', 'tbl_paket_pekerjaan.id_satker', '=', 'tbl_satker.id_satker')
+            ->leftJoin('tbl_rincian_output', 'tbl_paket_pekerjaan.id_paket_pekerjaan', '=', 'tbl_rincian_output.id_rincian_output')
+            ->when(Auth::user()->level != 0, function ($query) {
+                $query->where('tbl_paket_pekerjaan.id_satker', Auth::user()->level);
+            })
+
+            ->count();
     }
 
     public function insertOutput($data_output)
