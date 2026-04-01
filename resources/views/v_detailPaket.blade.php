@@ -195,13 +195,14 @@
                         <input type="text" name="satuan" class="form-control" id="satuan" required />
                     </div>
                     <div>
-                        <label for="nilai_bangunan" class="col-form-label">Nilai Bangunan</label>
+                        <label for="nilai_bangunan" class="col-form-label">Nilai Bangunan (Rp.)</label>
                         <input type="number" name="nilai_bangunan" class="form-control" id="nilai_bangunan" required />
                     </div>
                     <div>
-                        <label for="bobot" class="col-form-label">Bobot</label>
+                        <label for="bobot" class="col-form-label">Bobot (Persentase)</label>
                         <div class="form-text">
-                            (Bobot = Nilai Kontrak / Nilai Bangunan)
+                            (Bobot (Persentase) = Nilai Kontrak / Nilai Bangunan)
+                            (0 - 1)
                         </div>
                         <input type="decimal" name="bobot" class="form-control" id="bobot" required />
                     </div>

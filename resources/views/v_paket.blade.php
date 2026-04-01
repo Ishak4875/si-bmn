@@ -247,12 +247,12 @@
                     </div>
 
                     <div>
-                        <label for="id_ppk" class="col-form-label">Nama PPK</label>
+                        <label for="id_ppk" class="col-form-label">PPK (Jabatan)</label>
                         <select class="form-select" id="id_ppk" name="id_ppk" required>
                             @foreach($ppk as $dataPPK)
                             <option value="{{ $dataPPK->id_ppk }}"
                                 {{ $dataPPK->id_ppk == $data->id_ppk ? 'selected' : '' }}>
-                                {{ $dataPPK->nama }}
+                                {{ $dataPPK->jabatan_ppk }}
                             </option>
                             @endforeach
                         </select>
@@ -271,7 +271,7 @@
                     </div>
                     <div>
                         <label for="nomor_kontrak" class="col-form-label">Nomor Kontrak</label>
-                        <input type="number" value="{{$data->nomor_kontrak}}" name="nomor_kontrak" class="form-control" id="nomor_kontrak" required />
+                        <input type="text" value="{{$data->nomor_kontrak}}" name="nomor_kontrak" class="form-control" id="nomor_kontrak" required />
                     </div>
                     <div>
                         <label for="nama_penyedia" class="col-form-label">Nama Penyedia</label>
